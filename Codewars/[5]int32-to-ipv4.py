@@ -47,6 +47,9 @@ def int32_to_ip(int32):
         else:
             ip += '0'
 
+    # After this step, the format of ip is: 10000000001000000000101000000001
+    # Then try to separate it with '.' and convert it to
+
     ip = ".".join([str(int(ip[i:i + 8], 2)) for i in range(0, len(ip), 8)])
 
     return ip
