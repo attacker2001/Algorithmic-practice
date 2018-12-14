@@ -72,5 +72,12 @@ def solution(string, markers):
         pattern = ''
     return '\n'.join(split(pattern, line)[0].rstrip() for line in string.splitlines())
     
+(3)
+import re
+
+def solution(string,markers):
+  for marker in markers:
+    string = re.sub(r' *?\{}.*$'.format(marker),'', string, flags = re.M)
+  return string
 
 """
