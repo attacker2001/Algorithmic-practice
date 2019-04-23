@@ -1,6 +1,8 @@
 # coding=utf-8
 
 """
+https://www.codewars.com/kata/sum-of-pairs/train/python
+
 Sum of Pairs
 
 Given a list of integers and a single sum value, return the first two values (parse from the left please)
@@ -34,19 +36,31 @@ Be sure your code doesn't time out.
 """
 
 
+# def sum_pairs(ints, s):
+#     firstly_finished = len(ints)
+#     for x in ints:
+#         temp = ints[:]
+#         y = s - x
+#         temp.remove(x)
+#         if y in temp and max(temp.index(y), ints.index(x)) < firstly_finished:
+#             firstly_finished = temp.index(y) + 1
+#     if firstly_finished == len(ints):
+#         return None
+#     return [s-ints[firstly_finished], ints[firstly_finished]]
+
 def sum_pairs(ints, s):
-    firstly_finished = len(ints)
-    for x in ints:
-        temp = ints[:]
-        y = s - x
-        temp.remove(x)
-        if y in temp and max(temp.index(y), ints.index(x)) < firstly_finished:
-            firstly_finished = temp.index(y) + 1
-    if firstly_finished == len(ints):
-        return None
-    return [s-ints[firstly_finished], ints[firstly_finished]]
-# It took longer than 6000ms to complete
-# to be continued
+
+    tmp_ints = sorted(ints)
+
+    while tmp_ints:
+        current = tmp_ints.pop()
+
+        if current <= s and s - current in tmp_ints:
+            tmp_ints.remove(s - current)
+
+            location_a, location_b = ints.index(current), ints.index(s-current)
+
+            print location_a, location_b
 
 
 if __name__ == "__main__":
