@@ -24,11 +24,12 @@ class Solution(object):
         #     num = [int(i) for i in str(num)]
         #     num = sum(num)
         # return num
-        return (num-1) / 9 + 1
+        return (num - 1) / 9 + 1
+
 
 if __name__ == "__main__":
     a = Solution()
-    print a.addDigits(38)
+    print(a.addDigits(38))
 
 """
 Other soluntion:
