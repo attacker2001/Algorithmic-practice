@@ -14,6 +14,8 @@ return [0, 1].
 UPDATE (2016/2/13):
 The return format had been changed to zero-based indices. Please read the above updated description carefully.
 """
+
+
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -25,9 +27,9 @@ class Solution(object):
             temp = nums[:]
             temp.remove(i)
             if (target - i) in temp:
-                return sorted([nums.index(i), temp.index(target-i)+1])
+                return sorted([nums.index(i), temp.index(target - i) + 1])
 
 
 if __name__ == '__main__':
     a = Solution()
-    print a.twoSum([0, 4, 2, 0],0)
+    print a.twoSum([0, 4, 2, 0], 0)
