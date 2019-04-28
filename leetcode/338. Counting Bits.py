@@ -23,8 +23,9 @@ class Solution(object):
         :type num: int
         :rtype: List[int]
         """
-        return [bin(i).count('1') for i in xrange(num+1)]
+        return list(bin(i).count('1') for i in range(num + 1))
+
 
 if __name__ == "__main__":
     a = Solution()
-    print a.countBits(5)
+    print(a.countBits(5))
