@@ -41,10 +41,6 @@ Note:
 class Solution:
 
     def fib(self, n: int) -> int:
-        """
-        Runtime: 36 ms, faster than 81.94% of Python3 online submissions for Fibonacci Number.
-        Memory Usage: 13.1 MB, less than 5.02% of Python3 online submissions for Fibonacci Number.
-        """
         fib_list = [0, 1]
         if n == 0 or n == 1:
             return fib_list[n]
@@ -61,3 +57,26 @@ if __name__ == "__main__":
 
     for i in range(2000):
         print("Round %d:%d\n" % (i, a.fib(i)))
+
+"""
+Other solutions:
+# Python: no extra memory solution
+class Solution:
+    def fib(self, N: int) -> int:
+        if not N:
+            return 0
+        first, second = 0, 1
+        for i in range(N - 1):
+            first, second = second, first + second
+        return second
+        
+
+# Recursive solution
+class Solution(object):
+    def fib(self, N):
+        if N == 0:
+            return 0
+        elif N == 1:
+            return 1
+        return self.fib(N-1) + self.fib(N-2)
+"""
