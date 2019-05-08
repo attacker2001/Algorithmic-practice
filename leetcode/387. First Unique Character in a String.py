@@ -21,35 +21,27 @@ Note: You may assume the string contain only lowercase letters.
 
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-
-        # exclude "" and the str consists of a lot of single letter like 'aaa'
-        if s == "" or len(set(s)) == 1 and len(s) > 1:
-            return -1
-
-        # only one letter or all unique letters
-        elif len(s) == 1 or len(set(s)) == len(s):
-            return 0
-
+        uniq_list = [s.index(uniq) for uniq in set(s) if s.count(uniq) == 1]
+        if uniq_list:
+            return min(uniq_list)
         else:
-            uniq_list = [s.index(uniq) for uniq in set(s) if s.count(uniq) == 1]
-            if uniq_list:
-                return min(uniq_list)
-            else:
-                return -1
+            return -1
 
 
 if __name__ == '__main__':
     a = Solution()
-    print(a.firstUniqChar("leetcode"))
-    print(a.firstUniqChar("aadadaad"))
-    print(a.firstUniqChar(""))
-    print(a.firstUniqChar("za"))
-    print(a.firstUniqChar("aa"))
-    print(a.firstUniqChar("loveleetcode"))
-    print(a.firstUniqChar("z"))
+    print(a.firstUniqChar("leetcode") == 0)
+    print(a.firstUniqChar("aadadaad") == -1)
+    print(a.firstUniqChar("") == -1)
+    print(a.firstUniqChar("za") == 0)
+    print(a.firstUniqChar("aa") == -1)
+    print(a.firstUniqChar("loveleetcode") == 2)
+    print(a.firstUniqChar("z") == 0)
 
 """
 My other solutions:
+
+version 1:
     def firstUniqChar(self, s: str) -> int:
         if s == "" or len(set(s)) == 1 and len(s) > 1:
             return -1
@@ -61,11 +53,17 @@ My other solutions:
                 return min(uniq_list)
             else:
                 return -1
+version 2:
+    def firstUniqChar(self, s: str) -> int:
+        uniq_list = [s.index(uniq) for uniq in set(s) if s.count(uniq) == 1]
+        if uniq_list:
+            return min(uniq_list)
+        else:
+            return -1
 
 Other solutions:
    def firstUniqChar(self, s):
         letters='abcdefghijklmnopqrstuvwxyz'
         index=[s.index(l) for l in letters if s.count(l) == 1]
         return min(index) if len(index) > 0 else -1
-
 """
